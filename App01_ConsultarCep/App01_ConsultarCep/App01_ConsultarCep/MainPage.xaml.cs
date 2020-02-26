@@ -32,7 +32,7 @@ namespace App01_ConsultarCep
                     if (end != null)
                     {
                         RESULTADO.Text = string.Format("Endereço: {3}, {2}, {0}, {1} ", end.localidade, end.uf, end.logradouro, end.bairro);
-                    }
+                    } 
                     else
                     {
                         DisplayAlert("ERRO", "O endereço não foi encontrado para o CEP informado: " + cep, "OK");
