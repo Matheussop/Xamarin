@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App01_ControleXF.Controles.DatePickerPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <DatePicker
+                x:Name="Data"
+                TextColor="Red"
+                Format="dd/MM/yyyy"
+                MinimumDate="01/01/1900"
+                MaximumDate="01/01/2021" 
+                DateSelected="ActionDateSelected"
+                />
+            <!-- Date="01/01/2020"  Feito no arquivo cs com a data atual do sistema-->
+            <Label  x:Name="LblResultado"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

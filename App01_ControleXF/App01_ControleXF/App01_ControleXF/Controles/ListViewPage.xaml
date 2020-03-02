@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mod="clr-namespace:App01_ControleXF.Modelo"
+             x:Class="App01_ControleXF.Controles.ListViewPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView>
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type mod:Pessoa}">
+                        <mod:Pessoa nome="Joao Rodrigues" idade="18"/>
+                        <mod:Pessoa nome="Maria Rodrigues" idade="21"/>
+                        <mod:Pessoa nome="Felipe Rodrigues" idade="24"/>
+                        <mod:Pessoa nome="Jose Rodrigues" idade="30"/>
+                        <mod:Pessoa nome="Mariana Rodrigues" idade="31"/>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding nome}"/>
+                                <Label Text=" - "/>
+                                <Label Text="{Binding idade}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="5" Color="Black"/>
+           
+            <ListView x:Name="ListaPessoa">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="10" Orientation="Horizontal">
+                                <Label Text="{Binding nome}"/>
+                                <Label Text=" - "/>
+                                <Label Text="{Binding idade}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
