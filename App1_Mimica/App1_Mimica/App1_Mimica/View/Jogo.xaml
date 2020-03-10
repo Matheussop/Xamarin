@@ -1,27 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:conv="clr-namespace:App1_Mimica.View.Util"
              x:Class="App1_Mimica.View.Jogo">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:LabelPontuacaoConverter x:Key="convPontuacao"/>
+            <conv:LabelNomeConverter x:Key="convNome"/>
+            <conv:LabelRodadaConvert x:Key="convRodada"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout>
-                <Label Text="Grupo"/>
-                <Label Text="Palavra - Pontuação (1)"/>
-                <Label Text="************" HorizontalOptions="CenterAndExpand"/>
-                <Button Text="Mostrar"/>
-            </StackLayout>
-            <StackLayout>
-                <Label Text="Contagem regressica" FontSize="100" HorizontalOptions="CenterAndExpand"/>
-                <Label Text="seg"  HorizontalOptions="CenterAndExpand"/>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Acertou" BackgroundColor="LightGreen"/>
-                    <Button Text="Errou" BackgroundColor="OrangeRed"/>
+        <ScrollView>
+            <StackLayout Spacing="0">
+                <conv:Cabecalho/>
+                <StackLayout Style="{StaticResource Container}">
+                    <Frame>
+                        <StackLayout Style="{StaticResource ContainerEspecial}">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding NumeroGrupo}" FontSize="32"/>
+                                <Label Text="{Binding NomeGrupo, Converter={StaticResource convNome}}" FontSize="32"/>
+                                <Label Text="{Binding Rodada, Converter={StaticResource convRodada}}" HorizontalOptions="EndAndExpand" Margin="0,0,10,0" FontSize="32"/>
+                            </StackLayout>
+
+                            <Label Text="{Binding PalavraPontuacao, Converter={StaticResource convPontuacao}}" FontSize="32"/>
+                            <Label Text="{Binding Palavra}"  HorizontalOptions="CenterAndExpand" FontSize="64" FontAttributes="Bold"/>
+                            <Button Text="Mostrar" IsVisible="{Binding IsVisibleBtnMostrar}" Command="{Binding MostrarPalavra}"/>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout VerticalOptions="FillAndExpand">
+                        <StackLayout IsVisible="{Binding IsVisibleContainerContagem}" VerticalOptions="FillAndExpand">
+                            <Label Text="{Binding TextoContagem}" FontSize="100" HorizontalOptions="CenterAndExpand"/>
+                            <Label Text="seg"  HorizontalOptions="CenterAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                <Button Text="Acertou" HorizontalOptions="Center" BackgroundColor="#005726" TextColor="White" Command="{Binding Acertou}"/>
+                                <Button Text="Errou" HorizontalOptions="Center" BackgroundColor="#FF4000" TextColor="White" Command="{Binding Errou}"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <Button  IsVisible="{Binding IsVisibleBtnIniciar}"  Text="Iniciar" Command="{Binding Iniciar}"/>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-            <StackLayout>
-                <Button Text="Iniciar"/>
-            </StackLayout>
-        </StackLayout>
-
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
