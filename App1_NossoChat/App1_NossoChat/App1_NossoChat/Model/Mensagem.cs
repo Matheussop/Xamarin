@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App1_NossoChat.Model
 {
-    class Mensagem
+    public class Mensagem
     {
         public int id { get; set; }
         public int id_chat { get; set; }
